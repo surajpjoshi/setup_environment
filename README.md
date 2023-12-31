@@ -1,1 +1,1 @@
-Install Jenkins + Docker + Trivy + Kubectl + Promethus + Grafana
+Set up Jenkins, Docker, Trivy, Kubectl, Prometheus, and Grafana using Terraform
