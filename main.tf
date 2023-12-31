@@ -3,8 +3,8 @@ provider "aws" {
   
 }
 
-resource "aws_security_group" "Netflix-sg" {
-  name = "Netflix-sg"
+resource "aws_security_group" "DisnyHotStar" {
+  name = "DisnyHotStar"
   
   ingress = [
     for port in [22, 80, 443, 3000, 8080, 9000, 9090] : {
@@ -28,7 +28,7 @@ resource "aws_security_group" "Netflix-sg" {
   }
 
   tags = {
-    Name = "Netflix-sg"
+    Name = "DisnyHotStar"
   }
 }
 
@@ -40,7 +40,7 @@ resource "aws_instance" "ec2_instance_jenkins_sonar_trivy" {
     instance_type = "t2.large"
     key_name = var.ami_key_pair_name
     associate_public_ip_address = true
-    vpc_security_group_ids = [ aws_security_group.Netflix-sg.id ]
+    vpc_security_group_ids = [ aws_security_group.DisnyHotStar.id ]
     root_block_device {
         volume_size = 30
     delete_on_termination = true
@@ -57,7 +57,7 @@ resource "aws_instance" "ec2_instance_prometheus_grafana" {
         instance_type = var.instance_type
     key_name = var.ami_key_pair_name
     associate_public_ip_address = true
-    vpc_security_group_ids = [ aws_security_group.Netflix-sg.id ]
+    vpc_security_group_ids = [ aws_security_group.DisnyHotStar.id ]
     root_block_device {
         volume_size = "8"
     delete_on_termination = true
